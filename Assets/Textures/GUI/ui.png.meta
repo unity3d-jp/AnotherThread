@@ -1,0 +1,266 @@
+fileFormatVersion: 2
+guid: a4efdc0750cf14e72a2de0afb967806f
+timeCreated: 1458635265
+licenseType: Pro
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: maxlockon
+    21300002: gauge_b_L
+    21300004: gauge_b_M
+    21300006: gauge_b_S
+    21300008: weapon
+    21300010: gauge_r_L
+    21300012: gauge_r_M
+    21300014: gauge_r_S
+    21300016: location
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: 12
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 1
+    aniso: 0
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 0
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 1
+  alphaIsTransparency: 1
+  textureType: 5
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: maxlockon
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 454
+        width: 447
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -220.5, y: 1.5}
+        - {x: -220.5, y: -25.5}
+        - {x: -112.5, y: -25.5}
+        - {x: -112.5, y: 1.5}
+      - - {x: -95.5, y: 1.5}
+        - {x: -95.5, y: -25.5}
+        - {x: 35.5, y: -25.5}
+        - {x: 35.5, y: 1.5}
+      - - {x: 44.5, y: 1.5}
+        - {x: 32.5, y: -0.5}
+        - {x: 32.5, y: -22.5}
+        - {x: 51.5, y: -25.5}
+        - {x: 118.5, y: -25.5}
+        - {x: 118.5, y: 1.5}
+      - - {x: 123.5, y: 23.5}
+        - {x: 123.5, y: 2.5}
+        - {x: 132.5, y: -25.5}
+        - {x: 215.5, y: -25.5}
+        - {x: 219.5, y: -21.5}
+        - {x: 219.5, y: -0.5}
+        - {x: 208.5, y: 23.5}
+      - - {x: -83.5, y: 23.5}
+        - {x: -83.5, y: 2.5}
+        - {x: 117.5, y: 2.5}
+        - {x: 117.5, y: 17.5}
+        - {x: 91.5, y: 23.5}
+      - - {x: -221.5, y: 23.5}
+        - {x: -221.5, y: 3.5}
+        - {x: -84.5, y: 3.5}
+        - {x: -84.5, y: 23.5}
+    - name: gauge_b_L
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 308
+        width: 107
+        height: 133
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 21.5, y: 65.5}
+        - {x: 11.5, y: 66.5}
+        - {x: -52.5, y: 66.5}
+        - {x: -52.5, y: 40.5}
+        - {x: -25.5, y: -61.5}
+        - {x: -14.5, y: -66.5}
+        - {x: 49.5, y: -66.5}
+        - {x: 51.5, y: -60.5}
+        - {x: 51.5, y: -37.5}
+    - name: gauge_b_M
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 308
+        width: 80
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -38, y: 47}
+        - {x: -38, y: 5}
+        - {x: -15, y: -48}
+        - {x: 37, y: -48}
+        - {x: 37, y: 45}
+        - {x: 16, y: 47}
+    - name: gauge_b_S
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 307
+        width: 55
+        height: 86
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -26.5, y: 43}
+        - {x: -26.5, y: 17}
+        - {x: -23.5, y: -6}
+        - {x: -4.5, y: -42}
+        - {x: 26.5, y: -42}
+        - {x: 26.5, y: -1}
+        - {x: 6.5, y: 43}
+    - name: weapon
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 193
+        width: 181
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 89.5, y: -101.5}
+        - {x: 89.5, y: 102.5}
+        - {x: 84.5, y: 109.5}
+        - {x: 79.5, y: 112.5}
+        - {x: -78.5, y: 112.5}
+        - {x: -85.5, y: 107.5}
+        - {x: -85.5, y: 106.5}
+        - {x: -88.5, y: 102.5}
+        - {x: -88.5, y: -102.5}
+        - {x: -83.5, y: -109.5}
+        - {x: -82.5, y: -109.5}
+        - {x: -78.5, y: -112.5}
+        - {x: 74.5, y: -112.5}
+        - {x: 75.5, y: -111.5}
+        - {x: 79.5, y: -111.5}
+        - {x: 86.5, y: -106.5}
+    - name: gauge_r_L
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 156
+        width: 105
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 11.5, y: 67}
+        - {x: -52.5, y: 67}
+        - {x: -52.5, y: 23}
+        - {x: -17.5, y: -66}
+        - {x: 50.5, y: -66}
+        - {x: 51.5, y: -63}
+        - {x: 51.5, y: -24}
+        - {x: 22.5, y: 66}
+    - name: gauge_r_M
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 157
+        width: 77
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -37.5, y: 47.5}
+        - {x: -37.5, y: 6.5}
+        - {x: -14.5, y: -46.5}
+        - {x: 37.5, y: -46.5}
+        - {x: 37.5, y: 46.5}
+        - {x: 25.5, y: 47.5}
+    - name: gauge_r_S
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 158
+        width: 54
+        height: 83
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -27, y: 41.5}
+        - {x: -27, y: 22.5}
+        - {x: -13, y: -38.5}
+        - {x: -3, y: -41.5}
+        - {x: 26, y: -41.5}
+        - {x: 26, y: -9.5}
+        - {x: 5, y: 41.5}
+    - name: location
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 65
+        width: 492
+        height: 87
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 234, y: 9.5}
+        - {x: 241, y: 34.5}
+        - {x: 241, y: 42.5}
+        - {x: -246, y: 42.5}
+        - {x: -246, y: 12.5}
+        - {x: -153, y: -29.5}
+        - {x: -72, y: -41.5}
+        - {x: -35, y: -42.5}
+        - {x: 46, y: -42.5}
+        - {x: 93, y: -37.5}
+        - {x: 146, y: -29.5}
+        - {x: 158, y: -16.5}
+    outline: []
+  spritePackingTag: GUI
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
