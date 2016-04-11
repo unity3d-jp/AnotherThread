@@ -25,4 +25,4 @@ Window->AtlasExporter
 ゲーム部分は、かなりいい加減に作られているのでご注意ください。
 
 This is a "tech-sample" project.
-Please notice that the game itself is NOT well designed.
+Please note that the game itself is NOT well designed.

@@ -658,7 +658,7 @@ public class SystemManager : MonoBehaviour {
 		close_pause_menu();
 	}
 
-	public float onChangeFPS { get { return (float)getFPS()/10; } set { setFPS((int)value*10); } }
+	public float onChangeFPS { get { return (float)getFPS()/12; } set { setFPS((int)value*12); } }
 
 	public void onPauseMenuPMeter()
 	{
