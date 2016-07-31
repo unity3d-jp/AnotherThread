@@ -146,9 +146,17 @@ public class Sight
 
 	public void render(int front, Transform transform)
 	{
-        material_.SetPass(0);
 		mesh_.vertices = vertices_[front];
-        Graphics.DrawMeshNow(mesh_, transform.position, transform.rotation);
+		Graphics.DrawMesh(mesh_,
+						  transform.position,
+						  transform.rotation,
+						  material_,
+						  8 /* FinalRender layer */,
+						  null /* camera */,
+						  0 /* submeshIndex */,
+						  null /* material_property_block_ */,
+						  false /* castShadows */,
+						  false /* receiveShadows */);
 	}
 
 

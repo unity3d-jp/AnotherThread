@@ -15,6 +15,7 @@ public class SparkRenderer : MonoBehaviour {
 		mr_ = GetComponent<MeshRenderer>();
 		mf_.sharedMesh = Spark.Instance.getMesh();
 		mr_.sharedMaterial = Spark.Instance.getMaterial();
+		mr_.SetPropertyBlock(Spark.Instance.getMaterialPropertyBlock());
 	}
 }
 

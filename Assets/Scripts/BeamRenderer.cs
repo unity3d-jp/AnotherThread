@@ -15,6 +15,7 @@ public class BeamRenderer : MonoBehaviour {
 		mr_ = GetComponent<MeshRenderer>();
 		mf_.sharedMesh = Beam.Instance.getMesh();
 		mr_.sharedMaterial = Beam.Instance.getMaterial();
+		mr_.SetPropertyBlock(Beam.Instance.getMaterialPropertyBlock());
 	}
 }
 

@@ -28,9 +28,11 @@ public class Beam
 	private Vector2[][] uv2s_;
 	private Mesh mesh_;
 	private Material material_;
+	private MaterialPropertyBlock material_property_block_;
 
 	public Mesh getMesh() { return mesh_; }
 	public Material getMaterial() { return material_; }
+	public MaterialPropertyBlock getMaterialPropertyBlock() { return material_property_block_; }
 
 	public void init(Material material)
 	{
@@ -77,9 +79,20 @@ public class Beam
 		mesh_.uv2 = uv2s_[0];
 		mesh_.bounds = new Bounds(CV.Vector3Zero, CV.Vector3One * 99999999);
 		material_ = material;
+		material_property_block_ = new MaterialPropertyBlock();
+#if UNITY_5_3
 		material_.SetColor("_Colors0", new Color(0f, 0f, 0f));
 		material_.SetColor("_Colors1", new Color(0f, 1f, 0.5f));
 		material_.SetColor("_Colors2", new Color(1f, 0.5f, 0.25f));
+#else
+		var col_list = new Vector4[] {
+			new Vector4(0f, 0f, 0f, 1f),
+			new Vector4(0f, 1f, 0.5f, 1f),
+			new Vector4(1f, 0.5f, 0.25f, 1f),
+			new Vector4(1f, 1f, 0.25f, 1f),
+		};
+		material_property_block_.SetVectorArray("_Colors", col_list);
+#endif
 	}
 
 	public void render(int front)

@@ -36,6 +36,7 @@ public class MyFont {
 	private Vector3[][] vertices_;
 	private Vector2[][] uvs_;
 	public Material material_;
+	private MaterialPropertyBlock material_property_block_;
 	private Mesh mesh_;
 	private int index_;
 	
@@ -68,6 +69,8 @@ public class MyFont {
 		mesh_.triangles = triangles;
 		mesh_.bounds = new Bounds(Vector3.zero, Vector3.one * 99999999);
 		material_ = material;
+		material_property_block_ = new MaterialPropertyBlock();
+#if UNITY_5_3
 		material_.SetColor("_Colors0", new Color(0f, 0f, 0f)); // None
 		material_.SetColor("_Colors1", new Color(1f, 0.4f, 0.4f)); // Red
 		material_.SetColor("_Colors2", new Color(0.4f, 0.4f, 1f)); // Blue
@@ -76,6 +79,19 @@ public class MyFont {
 		material_.SetColor("_Colors5", new Color(1f, 1f, 0.4f)); // Yellow
 		material_.SetColor("_Colors6", new Color(0.4f, 1f, 1f)); // Cyan
 		material_.SetColor("_Colors7", new Color(1f, 1f, 1f)); // White
+#else
+		var col_list = new Vector4[] {
+			new Color(0f, 0f, 0f), // None
+			new Color(1f, 0.4f, 0.4f), // Red
+			new Color(0.4f, 0.4f, 1f), // Blue
+			new Color(1f, 0.4f, 1f), // Magenta
+			new Color(0.4f, 1f, 0.4f), // Green
+			new Color(1f, 1f, 0.4f), // Yellow
+			new Color(0.4f, 1f, 1f), // Cyan
+			new Color(1f, 1f, 1f), // White
+		};
+		material_property_block_.SetVectorArray("_Colors", col_list);
+#endif
 	}
 
 	public void begin()
@@ -150,10 +166,18 @@ public class MyFont {
 
 	public void render(int front, Transform transform)
 	{
-        material_.SetPass(0);
 		mesh_.vertices = vertices_[front];
 		mesh_.uv = uvs_[front];
-        Graphics.DrawMeshNow(mesh_, transform.position, transform.rotation);
+		Graphics.DrawMesh(mesh_,
+						  transform.position,
+						  transform.rotation,
+						  material_,
+						  8 /* FinalRender layer */,
+						  null /* camera */,
+						  0 /* submeshIndex */,
+						  material_property_block_,
+						  false /* castShadows */,
+						  false /* receiveShadows */);
     }
 }
 

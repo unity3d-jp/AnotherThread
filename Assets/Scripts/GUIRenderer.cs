@@ -22,12 +22,16 @@ public class GUIRenderer : MonoBehaviour {
 		MyFont.Instance.init(font_, font_material_);
 	}
 
-	void OnPostRender()
+	void Update()
 	{
 		int front = SystemManager.Instance.getRenderingFront();
 		Sight.Instance.render(front, transform);
 		MySprite.Instance.render(front, transform);
 		MyFont.Instance.render(front, transform);
+	}
+
+	void OnPostRender()
+	{
 		SystemManager.Instance.endPerformanceMeter2();
     }
 }

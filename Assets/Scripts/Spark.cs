@@ -34,6 +34,8 @@ public class Spark
 	private int spawn_index_;
 	private Mesh mesh_;
 	private Material material_;
+	private MaterialPropertyBlock material_property_block_;
+
 	static readonly int material_CurrentTime = Shader.PropertyToID("_CurrentTime");
 	static readonly int material_PreviousTime = Shader.PropertyToID("_PreviousTime");
 	static readonly int material_PrevInvMatrix = Shader.PropertyToID("_PrevInvMatrix");
@@ -42,6 +44,7 @@ public class Spark
 
 	public Mesh getMesh() { return mesh_; }
 	public Material getMaterial() { return material_; }
+	public MaterialPropertyBlock getMaterialPropertyBlock() { return material_property_block_; }
 
 	public void init(Material material)
 	{
@@ -87,6 +90,8 @@ public class Spark
 		mesh_.bounds = new Bounds(Vector3.zero, Vector3.one * 99999999);
 		mesh_.SetIndices(indices, MeshTopology.Lines, 0);
 		material_ = material;
+		material_property_block_ = new MaterialPropertyBlock();
+#if UNITY_5_3
 		material_.SetColor("_Colors0", new Color(0f, 0f, 0f, 0f)); // None
 		material_.SetColor("_Colors1", new Color(0f, 0f, 0f, 0f)); // NoneA
 		material_.SetColor("_Colors2", new Color(0f, 1f, 0.5f, 1f)); // Bullet
@@ -95,6 +100,19 @@ public class Spark
 		material_.SetColor("_Colors5", new Color(1f, 0.5f, 0.25f, 0f)); // EnemyBulletA
 		material_.SetColor("_Colors6", new Color(1f, 0.75f, 0.25f, 1f)); // Orange
 		material_.SetColor("_Colors7", new Color(1f, 0.75f, 0.25f, 0f)); // OrangeA
+#else
+		var col_list = new Vector4[] {
+			new Color(0f, 0f, 0f, 0f), // None
+			new Color(0f, 0f, 0f, 0f), // NoneA
+			new Color(0f, 1f, 0.5f, 1f), // Bullet
+			new Color(0f, 1f, 0.5f, 0f), // BulletA
+			new Color(1f, 0.5f, 0.25f, 1f), // EnemyBullet
+			new Color(1f, 0.5f, 0.25f, 0f), // EnemyBulletA
+			new Color(1f, 0.75f, 0.25f, 1f), // Orange
+			new Color(1f, 0.75f, 0.25f, 0f), // OrangeA
+		};
+		material_property_block_.SetVectorArray("_Colors", col_list);
+#endif
 
 		just_after_reset_ = true;
 	}

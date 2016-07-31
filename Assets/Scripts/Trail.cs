@@ -36,9 +36,11 @@ public class Trail
 	
 	private Mesh mesh_;
 	private Material material_;
+	private MaterialPropertyBlock material_property_block_;
 
 	public Mesh getMesh() { return mesh_; }
 	public Material getMaterial() { return material_; }
+	public MaterialPropertyBlock getMaterialPropertyBlock() { return material_property_block_; }
 
 	// Main Thread
 	public void init(Material material)
@@ -92,12 +94,25 @@ public class Trail
 		mesh_.uv = uvs;
 		mesh_.bounds = new Bounds(Vector3.zero, Vector3.one * 99999999);
 		material_ = material;
+		material_property_block_ = new MaterialPropertyBlock();
+#if UNITY_5_3
 		material_.SetColor("_Colors0", new Color(0f, 0f, 0f, 0f)); // None
 		material_.SetColor("_Colors1", new Color(0f, 0f, 0f, 0f)); // NoneA
 		material_.SetColor("_Colors2", new Color(0.1f, 0.6f, 1f, 1f)); // Player
 		material_.SetColor("_Colors3", new Color(0.1f, 0.6f, 1f, 0f)); // PlayerA
 		material_.SetColor("_Colors4", new Color(0.1f, 1f, 0.5f, 1f)); // Missile
 		material_.SetColor("_Colors5", new Color(0.1f, 1f, 0.5f, 0f)); // MissileA
+#else
+		var col_list = new Vector4[] {
+			new Vector4(0f, 0f, 0f, 0f), // None
+			new Vector4(0f, 0f, 0f, 0f), // NoneA
+			new Vector4(0.1f, 0.6f, 1f, 1f), // Player
+			new Vector4(0.1f, 0.6f, 1f, 0f), // PlayerA
+			new Vector4(0.1f, 1f, 0.5f, 1f), // Missile
+			new Vector4(0.1f, 1f, 0.5f, 0f), // MissileA
+		};
+		material_property_block_.SetVectorArray("_Colors", col_list);
+#endif
 	}
 
 	// Main Thread

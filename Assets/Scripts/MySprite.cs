@@ -52,6 +52,7 @@ public class MySprite {
 	private Vector3[][] vertices_;
 	private Vector2[][] uvs_;
 	public Material material_;
+	private MaterialPropertyBlock material_property_block_;
 	private Mesh mesh_;
 	private int index_;
 	
@@ -89,8 +90,9 @@ public class MySprite {
 		mesh_.uv = uvs_[0];
 		mesh_.triangles = triangles;
 		mesh_.bounds = new Bounds(Vector3.zero, Vector3.one * 99999999);
-
 		material_ = material;
+		material_property_block_ = new MaterialPropertyBlock();
+#if UNITY_5_3
 		material_.SetColor("_Colors0", new Color(0f, 0f, 0f, 0f)); // None
 		material_.SetColor("_Colors1", new Color(1f, 1f, 1f, 1f)); // Full
 		material_.SetColor("_Colors2", new Color(1f, 1f, 1f, 0.5f)); // Half
@@ -104,6 +106,24 @@ public class MySprite {
 		material_.SetColor("_Colors10", new Color(1f, 1f, 0f)); // Yellow
 		material_.SetColor("_Colors11", new Color(0f, 1f, 1f)); // Cyan
 		material_.SetColor("_Colors12", new Color(0.2f, 1f, 1f, 1f)); // GuardMark
+#else
+		var col_list = new Vector4[] {
+			new Color(0f, 0f, 0f, 0f), // None
+			new Color(1f, 1f, 1f, 1f), // Full
+			new Color(1f, 1f, 1f, 0.5f), // Half
+			new Color(0.1f, 1f, 0.2f), // Locked
+			new Color(1f, 0.5f, 0f), // LockFired
+			new Color(0f, 0f, 0f), // Black
+			new Color(1f, 0f, 0f), // Red
+			new Color(0f, 0f, 1f), // Blue
+			new Color(1f, 0f, 1f), // Magenta
+			new Color(0f, 1f, 0f), // Green
+			new Color(1f, 1f, 0f), // Yellow
+			new Color(0f, 1f, 1f), // Cyan
+			new Color(0.2f, 1f, 1f), // GuardMark
+		};
+		material_property_block_.SetVectorArray("_Colors", col_list);
+#endif
 	}
 
 	public void begin()
@@ -143,10 +163,18 @@ public class MySprite {
 
 	public void render(int front, Transform transform)
 	{
-        material_.SetPass(0);
 		mesh_.vertices = vertices_[front];
 		mesh_.uv = uvs_[front];
-        Graphics.DrawMeshNow(mesh_, transform.position, transform.rotation);
+		Graphics.DrawMesh(mesh_,
+						  transform.position,
+						  transform.rotation,
+						  material_,
+						  8 /* FinalRender layer */,
+						  null /* camera */,
+						  0 /* submeshIndex */,
+						  material_property_block_,
+						  false /* castShadows */,
+						  false /* receiveShadows */);
     }
 }
 

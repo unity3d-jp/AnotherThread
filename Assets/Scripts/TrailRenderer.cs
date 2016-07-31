@@ -15,6 +15,7 @@ public class TrailRenderer : MonoBehaviour {
 		mr_ = GetComponent<MeshRenderer>();
 		mf_.sharedMesh = Trail.Instance.getMesh();
 		mr_.sharedMaterial = Trail.Instance.getMaterial();
+		mr_.SetPropertyBlock(Trail.Instance.getMaterialPropertyBlock());
 	}
 }
 

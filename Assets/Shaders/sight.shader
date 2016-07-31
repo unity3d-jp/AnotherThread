@@ -2,8 +2,8 @@
     Properties {
     }
 	SubShader {
-		Tags { "RenderType" = "Opaque" }
-   		// Tags { "Queue"="Transparent" "IgnoreProjector"="True" "RenderType"="Transparent" }
+		// Tags { "RenderType" = "Opaque" }
+		Tags { "Queue"="Transparent" "IgnoreProjector"="True" "RenderType"="Transparent" }
 		ZWrite Off
 		ZTest Always
 		Cull Off
