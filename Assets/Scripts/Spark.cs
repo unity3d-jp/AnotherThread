@@ -48,10 +48,10 @@ public class Spark
 		positions_ = new Vector3[SPARK_MAX];
 		uv2_list_ = new Vector2[SPARK_MAX];
 
-		normals_ = new Vector3[2][] { new Vector3[POINT_MAX*3], new Vector3[POINT_MAX*3], };
-		uv2s_ = new Vector2[2][] { new Vector2[POINT_MAX*3], new Vector2[POINT_MAX*3], };
+		normals_ = new Vector3[2][] { new Vector3[POINT_MAX*2], new Vector3[POINT_MAX*2], };
+		uv2s_ = new Vector2[2][] { new Vector2[POINT_MAX*2], new Vector2[POINT_MAX*2], };
 
-		var vertices = new Vector3[POINT_MAX*3];
+		var vertices = new Vector3[POINT_MAX*2];
 		float range = 1f;
 		for (var i = 0; i < POINT_MAX; ++i) {
 			float x = Random.Range(-1f, 1f);
@@ -61,19 +61,17 @@ public class Spark
 			float len = Mathf.Sqrt(len2);
 			float rlen = 1.0f/len;
 			var point = new Vector3(x*rlen*range, y*rlen*range, z*rlen*range);
-			vertices[i*3+0] = point;
-			vertices[i*3+1] = point;
-			vertices[i*3+2] = point;
+			vertices[i*2+0] = point;
+			vertices[i*2+1] = point;
 		}
-		var indices = new int[POINT_MAX*3];
-		for (var i = 0; i < POINT_MAX*3; ++i) {
+		var indices = new int[POINT_MAX*2];
+		for (var i = 0; i < POINT_MAX*2; ++i) {
 			indices[i] = i;
 		}
-		var uvs = new Vector2[POINT_MAX*3];
+		var uvs = new Vector2[POINT_MAX*2];
 		for (var i = 0; i < POINT_MAX; ++i) {
-			uvs[i*3+0] = new Vector2(1f, 0f);
-			uvs[i*3+1] = new Vector2(1f, 0f);
-			uvs[i*3+2] = new Vector2(0f, 1f);
+			uvs[i*2+0] = new Vector2(1f, 0f);
+			uvs[i*2+1] = new Vector2(0f, 1f);
 		}
 
 		spawn_index_ = 0;
@@ -119,16 +117,13 @@ public class Spark
 	{
 		for (var s = 0; s < SPARK_MAX; ++s) {
 			for (var i = 0; i < PARTICLE_NUM; ++i) {
-				int idx = ((PARTICLE_NUM * s) + i) * 3;
+				int idx = ((PARTICLE_NUM * s) + i) *2;
 				normals_[front][idx+0] = positions_[s];
 				normals_[front][idx+1] = positions_[s];
-				normals_[front][idx+2] = positions_[s];
 				uv2s_[front][idx+0].x = uv2_list_[s].x;
-				uv2s_[front][idx+0].y = uv2_list_[s].y + 1f;
+				uv2s_[front][idx+0].y = uv2_list_[s].y;
 				uv2s_[front][idx+1].x = uv2_list_[s].x;
-				uv2s_[front][idx+1].y = uv2_list_[s].y;
-				uv2s_[front][idx+2].x = uv2_list_[s].x;
-				uv2s_[front][idx+2].y = uv2_list_[s].y + 1f;
+				uv2s_[front][idx+1].y = uv2_list_[s].y + 1f;
 			}
 		}
 	}

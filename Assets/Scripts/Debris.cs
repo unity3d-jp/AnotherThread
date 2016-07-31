@@ -30,32 +30,29 @@ public class Debris
 	{
 		range_ = 16;
 		rangeR_ = 1.0f/range_;
-		var vertices = new Vector3[POINT_MAX*3];
+		var vertices = new Vector3[POINT_MAX*2];
 		for (var i = 0; i < POINT_MAX; ++i) {
 			float x = Random.Range(-range_, range_);
 			float y = Random.Range(-range_, range_);
 			float z = Random.Range(-range_, range_);
 			var point = new Vector3(x, y, z);
-			vertices[i*3+0] = point;
-			vertices[i*3+1] = point;
-			vertices[i*3+2] = point;
+			vertices[i*2+0] = point;
+			vertices[i*2+1] = point;
 		}
-		var indices = new int[POINT_MAX*3];
-		for (var i = 0; i < POINT_MAX*3; ++i) {
+		var indices = new int[POINT_MAX*2];
+		for (var i = 0; i < POINT_MAX*2; ++i) {
 			indices[i] = i;
 		}
-		var colors = new Color[POINT_MAX*3];
+		var colors = new Color[POINT_MAX*2];
 		float power = 0.4f;
 		for (var i = 0; i < POINT_MAX; ++i) {
-			colors[i*3+0] = new Color(power, power, power, 0f);
-			colors[i*3+1] = new Color(power, power, power, 1f);
-			colors[i*3+2] = new Color(power, power, power, 0f);
+			colors[i*2+0] = new Color(power, power, power, 1f);
+			colors[i*2+1] = new Color(power, power, power, 0f);
 		}
-		var uvs = new Vector2[POINT_MAX*3];
+		var uvs = new Vector2[POINT_MAX*2];
 		for (var i = 0; i < POINT_MAX; ++i) {
-			uvs[i*3+0] = new Vector2(1f, 0f);
-			uvs[i*3+1] = new Vector2(1f, 0f);
-			uvs[i*3+2] = new Vector2(0f, 1f);
+			uvs[i*2+0] = new Vector2(1f, 0f);
+			uvs[i*2+1] = new Vector2(0f, 1f);
 		}
 		mesh_ = new Mesh();
 		mesh_.name = "debris";
