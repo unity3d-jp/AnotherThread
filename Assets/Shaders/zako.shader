@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 Shader "Custom/zako"
 {
     Properties {
@@ -22,7 +24,7 @@ Shader "Custom/zako"
 		void myvert (inout appdata_full v, out Input data)
 		{
 			UNITY_INITIALIZE_OUTPUT(Input,data);
-			float4 hpos = mul (UNITY_MATRIX_MVP, v.vertex);
+			float4 hpos = UnityObjectToClipPos (v.vertex);
 			float cameraVertDist = length(mul(UNITY_MATRIX_MV, v.vertex).xyz);
 			float fog_start = 10;
 			float fog_end = 300;

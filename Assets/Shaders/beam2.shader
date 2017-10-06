@@ -1,4 +1,6 @@
-﻿Shader "Custom/beam2" {
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "Custom/beam2" {
     Properties {
 		_MainTex ("Base (RGB)", 2D) = "white" {}
     }
@@ -52,7 +54,7 @@
 					tv -= (v.texcoord.y-0.5f)*vert * size;
 				}
             	v2f o;
-			    o.pos = mul(UNITY_MATRIX_MVP, float4(tv, 1));
+			    o.pos = UnityObjectToClipPos(float4(tv, 1));
 				o.color = v.color;
 				o.uv = MultiplyUV(UNITY_MATRIX_TEXTURE0, v.texcoord);
             	return o;

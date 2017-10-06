@@ -1,4 +1,6 @@
-﻿Shader "Custom/aura" {
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "Custom/aura" {
     Properties {
 		_Color ("Main Color", Color) = (1,1,1,1)
 		_MainTex ("Base (RGB)", 2D) = "white" {}
@@ -36,7 +38,7 @@
             v2f vert(appdata_custom v)
             {
 				v2f o;
-			    o.pos = mul(UNITY_MATRIX_MVP, v.vertex);
+			    o.pos = UnityObjectToClipPos(v.vertex);
             	// o.color = fixed4(_Color.rgb, _Color.a * v.color.a);
             	o.color = _Color;
 				float2 tex = v.texcoord * _MainTex_ST.xy + _MainTex_ST.zw;

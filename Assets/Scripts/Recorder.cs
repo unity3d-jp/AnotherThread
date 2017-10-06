@@ -80,7 +80,7 @@ public class Recorder : MonoBehaviour
         ++frameno;
         string path = string.Format("{0}{1}_{2:D4}.png", directory, baseFilename, frameno);
 
-		Application.CaptureScreenshot(path, scale);
+		ScreenCapture.CaptureScreenshot(path, scale);
 		Debug.Log(string.Format("screen shot : path = {0}, scale = {1} (screen = {2}, {3})",
 			path, scale, Screen.width, Screen.height), this);
 

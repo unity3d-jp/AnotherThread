@@ -1,4 +1,6 @@
-﻿Shader "Custom/debris" {
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "Custom/debris" {
 	SubShader {
    		Tags { "Queue"="Transparent" "IgnoreProjector"="True" "RenderType"="Transparent" }
 		ZWrite Off
@@ -44,11 +46,11 @@
 				v.vertex.xyz += trip;
 
             	float4 tv0 = v.vertex * v.texcoord.x;
-            	tv0 = mul (UNITY_MATRIX_MVP, tv0);
+            	tv0 = UnityObjectToClipPos (tv0);
             	
 				v.vertex.z += _Move;
             	float4 tv1 = v.vertex * v.texcoord.y;
-				tv1 = mul (UNITY_MATRIX_MV, tv1);
+				tv1.xyz = UnityObjectToViewPos(tv1);
             	tv1 = mul (_PrevInvMatrix, tv1);
             	tv1 = mul (UNITY_MATRIX_P, tv1);
             	

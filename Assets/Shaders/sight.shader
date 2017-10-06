@@ -1,4 +1,6 @@
-﻿Shader "Custom/sight" {
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "Custom/sight" {
     Properties {
     }
 	SubShader {
@@ -32,7 +34,7 @@
             v2f vert(appdata_custom v)
             {
             	v2f o;
-			    o.pos = mul(UNITY_MATRIX_MVP, float4(v.vertex.xyz,1));
+			    o.pos = UnityObjectToClipPos(float4(v.vertex.xyz,1));
 				o.color = v.color;
             	return o;
             }

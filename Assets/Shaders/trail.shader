@@ -1,4 +1,6 @@
-﻿Shader "Custom/trail" {
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "Custom/trail" {
     Properties {
 		_MainTex ("Base (RGB)", 2D) = "white" {}
     }
@@ -45,7 +47,7 @@
 				tv.xyz += (v.texcoord.x-0.5f)*side*size;
 				
 				v2f o;
-			    o.pos = mul(UNITY_MATRIX_MVP, tv);
+			    o.pos = UnityObjectToClipPos(tv);
             	// o.color = v.color;
 				int color_index = (int)v.texcoord2.y;
 				o.color = _Colors[color_index];

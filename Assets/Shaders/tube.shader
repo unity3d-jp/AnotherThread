@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 Shader "Custom/tube"
 {
     Properties {
@@ -22,8 +24,8 @@ Shader "Custom/tube"
 		void myvert (inout appdata_full v, out Input data)
 		{
 			UNITY_INITIALIZE_OUTPUT(Input,data);
-			float4 hpos = mul (UNITY_MATRIX_MVP, v.vertex);
-			float cameraVertDist = length(mul(UNITY_MATRIX_MV, v.vertex).xyz);
+			float4 hpos = UnityObjectToClipPos (v.vertex);
+			float cameraVertDist = length(UnityObjectToViewPos(v.vertex));
 			float fog_start = 100;
 			float fog_end = 320;
  			data.fog = saturate((fog_start - cameraVertDist) / (fog_start - fog_end));

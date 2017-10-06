@@ -592,9 +592,9 @@ public class SystemManager : MonoBehaviour {
 		}
 
 		// memory investigation
-		used_heap_size_ = (long)Profiler.usedHeapSize;
-		mono_heap_size_ = (long)Profiler.GetMonoHeapSize();
-		mono_used_size_ = (long)Profiler.GetMonoUsedSize();
+		used_heap_size_ = (long)UnityEngine.Profiling.Profiler.usedHeapSize;
+		mono_heap_size_ = (long)UnityEngine.Profiling.Profiler.GetMonoHeapSize();
+		mono_used_size_ = (long)UnityEngine.Profiling.Profiler.GetMonoUsedSize();
 	}
 
 	private void end_of_frame()

@@ -1,4 +1,6 @@
-﻿Shader "Custom/explosion" {
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "Custom/explosion" {
     Properties {
 		_MainTex ("Base (RGB)", 2D) = "white" {}
 		//_InvFade ("Soft Particles Factor", Range(0.01,3.0)) = 1.0
@@ -91,7 +93,7 @@
 				texv += -v.texcoord.y * rH;
 				
             	v2f o;
-			    o.pos = mul(UNITY_MATRIX_MVP, float4(tv.xyz,1));
+			    o.pos = UnityObjectToClipPos(float4(tv.xyz,1));
 				o.texcoord = MultiplyUV(UNITY_MATRIX_TEXTURE0,
 										float4(texu, texv, 0, 0));
             	return o;

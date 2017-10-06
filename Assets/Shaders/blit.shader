@@ -1,4 +1,6 @@
-﻿Shader "Custom/blit" {
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "Custom/blit" {
     Properties {
 		_MainTex ("Base (RGB)", 2D) = "white" {}
 		//_InvFade ("Soft Particles Factor", Range(0.01,3.0)) = 1.0
@@ -36,7 +38,7 @@
             v2f vert(appdata_custom v)
             {
             	v2f o;
-			    o.pos = mul(UNITY_MATRIX_MVP, float4(v.vertex.xyz, 1));
+			    o.pos = UnityObjectToClipPos(float4(v.vertex.xyz, 1));
 				o.texcoord = MultiplyUV(UNITY_MATRIX_TEXTURE0,
 										float4(v.texcoord.xy, 0, 0));
 				o.texcoord = v.texcoord.xy;

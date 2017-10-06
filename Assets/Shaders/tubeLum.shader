@@ -1,4 +1,6 @@
-﻿Shader "Custom/tubeLum" {
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "Custom/tubeLum" {
     Properties {
 		_MainTex ("Base (RGB)", 2D) = "white" {}
 		_Color ("Main Color", Color) = (1,1,1,1)
@@ -36,7 +38,7 @@
             v2f vert(appdata_custom v)
             {
 				v2f o;
-			    o.pos = mul(UNITY_MATRIX_MVP, v.vertex);
+			    o.pos = UnityObjectToClipPos(v.vertex);
             	o.color = _Color;
 				float2 tex = v.texcoord * _MainTex_ST.xy + _MainTex_ST.zw;
 				o.uv = MultiplyUV(UNITY_MATRIX_TEXTURE0, tex);

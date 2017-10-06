@@ -1,4 +1,6 @@
-﻿Shader "Custom/hahen" {
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "Custom/hahen" {
     Properties {
 		_MainTex ("Base (RGB)", 2D) = "white" {}
     }
@@ -73,7 +75,7 @@
 				tv0.xy += v.texcoord2.xy;
 				tv0.z += v.texcoord3.x;
 				tv0.z += elapsed*(-15);
-            	tv0 = mul(UNITY_MATRIX_MVP, tv0);
+            	tv0 = UnityObjectToClipPos(tv0);
             	
             	v2f o;
             	o.pos = tv0;

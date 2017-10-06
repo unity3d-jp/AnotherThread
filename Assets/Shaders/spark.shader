@@ -1,4 +1,6 @@
-﻿Shader "Custom/spark" {
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "Custom/spark" {
 	SubShader {
    		Tags { "Queue"="Transparent" "IgnoreProjector"="True" "RenderType"="Transparent" }
 		ZWrite Off
@@ -47,7 +49,7 @@
 				tv0.xyz += v.normal.xyz;
 				tv0.z += elapsed * flow_z;
 				tv0 *= v.texcoord.x;
-            	tv0 = mul(UNITY_MATRIX_MVP, tv0);
+            	tv0 = UnityObjectToClipPos(tv0);
             	
 				float prev_elapsed = (_PreviousTime - v.texcoord2.x);
 				float prev_size = prev_elapsed * scale;
@@ -56,7 +58,7 @@
 				tv1.xyz += v.normal.xyz;
 				tv1.z += prev_elapsed * flow_z;
 				tv1 *= v.texcoord.y;
-				tv1 = mul(UNITY_MATRIX_MV, tv1);
+				tv1.xyz = UnityObjectToViewPos(tv1);
             	tv1 = mul(_PrevInvMatrix, tv1);
             	tv1 = mul(UNITY_MATRIX_P, tv1);
             	

@@ -1,4 +1,6 @@
-﻿Shader "Custom/beam_old" {
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "Custom/beam_old" {
 	SubShader {
    		Tags { "Queue"="Transparent" "IgnoreProjector"="True" "RenderType"="Transparent" }
 		ZWrite Off
@@ -38,7 +40,7 @@
 				float4 finalposition = tv0;
 
             	v2f o;
-			    o.pos = mul( UNITY_MATRIX_MVP, finalposition);
+			    o.pos = UnityObjectToClipPos( finalposition);
             	o.color = v.color;
             	return o;
             }
